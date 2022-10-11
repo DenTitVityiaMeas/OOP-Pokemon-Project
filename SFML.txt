@@ -1,0 +1,2 @@
+g++ -std=c++11 -I C:\CPP\SFML-2.5.1-windows-gcc-7.3.0-mingw-64-bit\SFML-2.5.1\include -c main.cpp -o main.o
+g++ -std=c++11 -L C:\CPP\SFML-2.5.1-windows-gcc-7.3.0-mingw-64-bit\SFML-2.5.1\lib .\main.o -o main.exe -lsfml-graphics -lsfml-window -lsfml-audio -lsfml-network -lsfml-system
