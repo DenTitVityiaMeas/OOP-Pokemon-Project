@@ -10,6 +10,8 @@ class Textbox {
   Textbox(int size, sf::Color color, bool sel) {
     textbox.setCharacterSize(size);
     textbox.setColor(color);
+    textbox.setOutlineColor(sf::Color::White);
+    textbox.setOutlineThickness(1);
     isSelected = sel;
     if (sel) {
       textbox.setString("_");
@@ -44,7 +46,7 @@ class Textbox {
       int charTyped = input.text.unicode;
       if (charTyped < 128) {  // typing input abuse proof
         if (hasLimit) {
-          if (text.str().length() <= limit) {
+          if (text.str().length() <= limit) { // check limit
             inputLogic(charTyped);
           } else if (text.str().length() > limit && charTyped == DELETE_KEY) {
             deleteLadtChar();
@@ -63,6 +65,7 @@ class Textbox {
   bool hasLimit = false;
   int limit;
 
+  // Char input if key is not special key
   void inputLogic(int charTyped) {
     if (charTyped != DELETE_KEY && charTyped != ENTER_KEY &&
         charTyped != ESCAPE_KEY) {
@@ -74,13 +77,14 @@ class Textbox {
     }
     textbox.setString(text.str() + "_");
   }
+  // Char delete function
   void deleteLadtChar() {
     std::string t = text.str();
     std::string newT = "";
     for (int i = 0; i < t.length() - 1; i++) {
       newT += t[i];
     }
-    text.str("");
+    text.str("");  // Initialize before reassign
     text << newT;
 
     textbox.setString(text.str());
