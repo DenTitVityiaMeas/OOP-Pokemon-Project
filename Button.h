@@ -10,12 +10,10 @@ class Button {
     text.setString(t);
     text.setColor(textColor);
     text.setCharacterSize(charSize);
-    text.setOutlineColor(sf::Color::White);
-    text.setOutlineThickness(2);
     button.setSize(size);
     button.setFillColor(bgColor);
     button.setOutlineColor(sf::Color::Black);
-    button.setOutlineThickness(2);
+    button.setOutlineThickness(1);
   }
   void setFont(sf::Font &font) { text.setFont(font); }    //sfml text methods
   void setBackColor(sf::Color color) { button.setFillColor(color); }

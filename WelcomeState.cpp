@@ -89,6 +89,13 @@ void WelcomeState() {
             window.close();
           }
           break;
+        case sf::Event::KeyPressed:
+          if (event.key.code == sf::Keyboard::Enter) {
+            std::cout << "ENTER\n";
+            window.close();
+            TrainerName();
+          }
+          break;
       }
     }
     // Update

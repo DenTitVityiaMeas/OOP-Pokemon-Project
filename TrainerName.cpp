@@ -123,7 +123,7 @@ string TrainerName() {
           break;
           // Check button pressed
         case sf::Event::MouseButtonPressed:
-          if (confirmButton.isMouseOver(window)) {          
+          if (confirmButton.isMouseOver(window)) {
             string trainerName = "";
             trainerName = traiName.getText();
             if (trainerName != "") {
@@ -131,10 +131,10 @@ string TrainerName() {
               cout << "Trainer's name is: " << trainerName << endl;
               window.close();
               PokemonMenu(trainerName);
-            } else if (exitButton.isMouseOver(window)) {
-              std::cout << "EXIT\n";
-              window.close();
             }
+          } else if (exitButton.isMouseOver(window)) {
+            std::cout << "EXIT\n";
+            window.close();
           }
           break;
           // Press Escape key to get back to previous state
@@ -143,6 +143,15 @@ string TrainerName() {
             window.close();
             WelcomeState();
             std::cout << "Escape Pressed" << std::endl;
+          } else if (event.key.code == sf::Keyboard::Enter) {
+            string trainerName = "";
+            trainerName = traiName.getText();
+            if (trainerName != "") {
+              std::cout << "ENTER\n";
+              cout << "Trainer's name is: " << trainerName << endl;
+              window.close();
+              PokemonMenu(trainerName);
+            }
           }
           break;
       }

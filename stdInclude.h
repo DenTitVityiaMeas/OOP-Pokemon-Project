@@ -21,11 +21,16 @@
 // User define headers
 using namespace std;
 
+#include "BattleBlaVsGren.h"
+#include "BattleBulVsGren.h"
+#include "BattleChariVsGren.h"
 #include "BattleSystem.h"
 #include "Button.h"
+#include "Function.h"
 #include "Moves.h"
 #include "Pokemon.h"
 #include "PokemonMenu.h"
+#include "Result.h"
 #include "Textbox.h"
 #include "TrainerName.h"
 #include "WelcomeState.h"

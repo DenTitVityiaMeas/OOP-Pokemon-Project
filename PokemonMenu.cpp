@@ -8,17 +8,6 @@
 
 string PokemonMenu(string trainerName) {
   cout << trainerName << " you're in Pokemon menu State." << endl;
-  int playerChoice;
-  char status;
-  string nickname;
-  Charizard Charizard;
-  Blastoise Blastoise;
-  Bulbasaur Bulbasaur;
-  // Heal,Element,Speed,Name,Armor
-  Pokemon Geninja(8, 1, 3, "Geninja", 0), Metapod(8, 1, 3, "Metapod", 0);
-  Pokemon Pokemon_array[2] = {Geninja, Metapod};
-  int i = rand() % 2 + 1;
-
   // SFML Redering window
   sf::RenderWindow window;
   sf::Vector2i centerWindow((sf::VideoMode::getDesktopMode().width / 2) - 445,
@@ -33,7 +22,7 @@ string PokemonMenu(string trainerName) {
   menueBackGround.loadFromFile("Resources/battleFieldWithBall.png");
   sf::Sprite menueBackGroundSprite;
   menueBackGroundSprite.setTexture(menueBackGround);
-  menueBackGroundSprite.setPosition(sf::Vector2f(-4, -208));
+  menueBackGroundSprite.setPosition(sf::Vector2f(-10, -208));
   menueBackGroundSprite.scale(sf::Vector2f(0.33, 0.33));
 
   sf::Texture charizardF;
@@ -61,7 +50,7 @@ string PokemonMenu(string trainerName) {
   courierNew.loadFromFile("Resources/Courier New Regular.ttf");
 
   // Make Pokemon selectable
-  Button VenusaurButton("Venusaur", {200, 360}, 30, sf::Color(200, 255, 200),
+  Button VenusaurButton("Bulbasaur", {200, 360}, 30, sf::Color(200, 255, 200),
                         sf::Color::Black);
   VenusaurButton.setFont(courierNew);
   VenusaurButton.setPosition({20, 20});
@@ -84,8 +73,7 @@ string PokemonMenu(string trainerName) {
   venesaurSummary.setOutlineColor(sf::Color::White);
   venesaurSummary.setOutlineThickness(1);
   venesaurSummary.setPosition(30, 240);
-  venesaurSummary.setString(
-      "HP: 12\nAttack: 1\nS.Attack: 3\nDeffence: 3\nElement: Grass");
+  venesaurSummary.setString("HP: 10\nSpeed: 7\nElement: Grass");
   sf::Text blastoiseSummary;
   blastoiseSummary.setFont(courierNew);
   blastoiseSummary.setCharacterSize(20);
@@ -93,8 +81,7 @@ string PokemonMenu(string trainerName) {
   blastoiseSummary.setOutlineColor(sf::Color::White);
   blastoiseSummary.setOutlineThickness(1);
   blastoiseSummary.setPosition(270, 240);
-  blastoiseSummary.setString(
-      "HP: 11\nAttack: 2\nS.Attack: 4\nDeffence: 2\nElement: Water");
+  blastoiseSummary.setString("HP: 10\nSpeed: 7\nElement: Water");
   sf::Text charizardSummary;
   charizardSummary.setFont(courierNew);
   charizardSummary.setCharacterSize(20);
@@ -102,8 +89,7 @@ string PokemonMenu(string trainerName) {
   charizardSummary.setOutlineColor(sf::Color::White);
   charizardSummary.setOutlineThickness(1);
   charizardSummary.setPosition(510, 240);
-  charizardSummary.setString(
-      "HP: 10\nAttack: 3\nS.Attack: 5\nDeffence: 1\nElement: Fire");
+  charizardSummary.setString("HP: 10\nSpeed: 7\nElement: Fire");
   // User interacting message
   sf::Texture userInteractMessageBox;
   userInteractMessageBox.loadFromFile("Resources/message.jpg");
@@ -151,14 +137,17 @@ string PokemonMenu(string trainerName) {
           break;
         case sf::Event::MouseButtonPressed:
           if (VenusaurButton.isMouseOver(window)) {
-            std::cout << "You picked Venusaur\n";
-            actionBoardG(3, Bulbasaur, Geninja);
+            window.close();
+            std::cout << "You picked Bulbasaur\n";
+            BattleBulVsGren(trainerName);
           } else if (BlastoiseButton.isMouseOver(window)) {
+            window.close();
             std::cout << "You picked Blastoise\n";
-            actionBoardW(2, Blastoise, Geninja);
+            BattleBlaVsGren(trainerName);
           } else if (CharizardButton.isMouseOver(window)) {
+            window.close();
             cout << "You picked Charizard\n" << endl;
-            actionBoardF(1, Charizard, Geninja);
+            BattleChariVsGren(trainerName);
           } else if (exitButton.isMouseOver(window)) {
             std::cout << "EXIT\n";
             window.close();
